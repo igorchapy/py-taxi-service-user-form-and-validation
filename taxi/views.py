@@ -99,7 +99,7 @@ class DriverCreateView(generic.CreateView):
 
     def form_valid(self, form):
         response = super().form_valid(form)
-        login(self.request, form.instance)  # Автоматично логінить користувача після створення акаунта
+        login(self.request, form.instance)
         return response
 
 

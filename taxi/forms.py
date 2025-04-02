@@ -3,7 +3,6 @@ from django.contrib.auth.forms import UserCreationForm
 from django.core.validators import RegexValidator
 from taxi.models import Driver, Car
 
-
 class DriverCreationForm(UserCreationForm):
     license_number = forms.CharField(
         max_length=8,
@@ -27,7 +26,6 @@ class DriverCreationForm(UserCreationForm):
             "last_name"
         )
 
-
 class DriverLicenseUpdateForm(forms.ModelForm):
     license_number = forms.CharField(
         max_length=8,
@@ -43,7 +41,6 @@ class DriverLicenseUpdateForm(forms.ModelForm):
     class Meta:
         model = Driver
         fields = ["license_number"]
-
 
 class CarForm(forms.ModelForm):
     class Meta:
