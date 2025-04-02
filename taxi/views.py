@@ -12,9 +12,6 @@ from .models import Driver, Car, Manufacturer
 from taxi.models import Driver, Car, Manufacturer
 
 
-@login_required
-@@ -64,18 +66,20 @@ class CarDetailView(LoginRequiredMixin, generic.DetailView):
-
 class CarCreateView(LoginRequiredMixin, generic.CreateView):
     model = Car
     fields = "__all__"
@@ -36,7 +33,6 @@ class CarDeleteView(LoginRequiredMixin, generic.DeleteView):
     success_url = reverse_lazy("taxi:car-list")
 
 
-@@ -87,3 +91,40 @@ class DriverListView(LoginRequiredMixin, generic.ListView):
 class DriverDetailView(LoginRequiredMixin, generic.DetailView):
     model = Driver
     queryset = Driver.objects.all().prefetch_related("cars__manufacturer")
@@ -77,3 +73,7 @@ class DriverLicenseUpdateView(LoginRequiredMixin, generic.UpdateView):
     form_class = DriverLicenseUpdateForm
     template_name = "taxi/driver_license_update.html"
     success_url = reverse_lazy("taxi:driver-list")
+
+
+form.instance.license_number = form.cleaned_data["license_number"]
+form.instance.save()
