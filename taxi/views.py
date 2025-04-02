@@ -1,14 +1,10 @@
-@@ -1,10 +1,12 @@
 from django.contrib.auth import login
 from django.contrib.auth.decorators import login_required
-from django.shortcuts import render
 from django.shortcuts import render, get_object_or_404, redirect
 from django.urls import reverse_lazy
 from django.views import generic
 from django.contrib.auth.mixins import LoginRequiredMixin
 from taxi.forms import DriverLicenseUpdateForm, CarForm, DriverCreationForm
-
-from .models import Driver, Car, Manufacturer
 from taxi.models import Driver, Car, Manufacturer
 
 
@@ -73,7 +69,3 @@ class DriverLicenseUpdateView(LoginRequiredMixin, generic.UpdateView):
     form_class = DriverLicenseUpdateForm
     template_name = "taxi/driver_license_update.html"
     success_url = reverse_lazy("taxi:driver-list")
-
-
-form.instance.license_number = form.cleaned_data["license_number"]
-form.instance.save()
